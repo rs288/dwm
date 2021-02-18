@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+menu_list="shutdown\nlogout\nreboot\nsuspend\nlock"
+sel=$(echo -e "$menu_list" | dmenu $@ -i -l 3)
+
+case "$sel" in
+    logout)  kill -9 -1 &;;
+    suspend)  systemctl suspend & ;;
+    shutdown) systemctl poweroff & ;;
+    reboot)   systemctl reboot & ;;
+    lock)     slock & ;;
+esac

@@ -1,0 +1,2 @@
+$(xmodmap -e "keycode 44 =  Down" & xmodmap -e "keycode 45 =  Up")
+$(xmodmap -e "keycode 43 =  Left" & xmodmap -e "keycode 46 =  Right")

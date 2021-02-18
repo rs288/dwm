@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+menu_list="US\nlatam\nBr"
+sel=$(echo -e "$menu_list" | dmenu $@ -i -l 5)
+
+case "$sel" in
+	US)	setxkbmap us &;;
+	latam)	setxkbmap latam & ;;
+	Br)	setxkbmap br &;;
+esac
+

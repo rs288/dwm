@@ -3,7 +3,7 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 0;        /* 0 means no bar */
+static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=12" };
 static const char dmenufont[]       = "monospace:size=10";
@@ -61,6 +61,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "termite", NULL };
+/*modify hjkl keymaps to function as arrows keys*/
+#define LETRAS "xmodmap -e \" keycode 44  =  j\" & xmodmap -e \" keycode 45  =  k\" & xmodmap -e \" keycode 43  = h\" & xmodmap -e \" keycode 46  =  l\""
+#define FLECHAS "xmodmap -e \" keycode 44  =  Down\" & xmodmap -e \" keycode 45  =  Up\" & xmodmap -e \" keycode 43  = Left\" & xmodmap -e \" keycode 46  =  Right\""
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -91,8 +94,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
-	{ MODKEY,                       XK_e,      spawn,          SHCMD("letras") },//escribir como constante
-	{ MODKEY,                       XK_q,      spawn,          SHCMD("flechas") },//escribir como constante
+	{ MODKEY,                       XK_e,      spawn,          SHCMD(LETRAS) },
+	{ MODKEY,                       XK_q,      spawn,          SHCMD(FLECHAS) },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {1} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {0} },
 	{ 0,  				0x1008ff13,spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+1 dwmblocks ")  },

@@ -3,7 +3,9 @@
 ## Patches and features
 - Clickable statusbar with my build of [dwmblocks](https://github.com/rs288/dwmblocks)
 - Fake full screen: Only allow clients to "fullscreen" into space currently given to them.
+- Aspectresize: This patch you to resize the window with its aspect ratio remain constant, use moveresize patch for manual resize
 - Horizgrid: It arranges windows in a grid pattern in which every window is roughly the same size, adjusted such that there are no gaps.
+- Centeredmaster modified: centeredmaster centers the nmaster area on screen.
 - Pertag: This patch keeps layout, mwfact, barpos and nmaster per tag.
 - Restartsig: dwm can now be restarted via MOD+CTRL+SHIFT+Q
 ## Installation for newbs
@@ -12,6 +14,9 @@
 git clone https://github.com/rs288/dwm.git
 cd dwm
 sudo make install
+# Install Scripts Dwmblocks
+chmod +x scripts/*
+sudo mv scripts/* /usr/local/bin
 ```
 ## to add color emoji to dwmblocks install `libxft-bgra`!
 

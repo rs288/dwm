@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
-menu_list="connman-gtk\npulsemixer\nhtop\nscan\nflameshot\nflameshot-gui"
-sel=$(echo -e "$menu_list" | dmenu $@ -i -l 3)
+menu_list="flameshot\nflameshot-gui\nscan\npulsemixer"
+sel=$(echo -e "$menu_list" | dmenu $@ -i -l 2)
 
 case "$sel" in
-   connman-gtk) connman-gtk &;;
     pulsemixer) termite -e pulsemixer &;;
-    htop) termite -e htop & ;;
     scan)  simple-scan & ;;
     flameshot) flameshot &;;
     flameshot-gui) flameshot gui &;;

@@ -33,16 +33,18 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.35; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 0; /* 1 will force focus on the fullscreen window */
 
+#include "tatami.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[M]",      monocle }, /* first entry is default */
-	{ "[]=",      tile },    
+    { "|+|",      tatami },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
+    { "[]=",      tile },    
 };
 
 /* key definitions */
@@ -93,6 +95,7 @@ static Key keys[] = {
 	{ 0,                            0x1008ff12,spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+1 dwmblocks ") },
 
 
+	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_e,      incnmaster,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },

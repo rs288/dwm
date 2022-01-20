@@ -87,6 +87,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+    { MODKEY,                       XK_q,      quit,           {1} }, 
     { 0,  			            	0x1008ff13,spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+1 dwmblocks ")  },
 	{ 0,                            0x1008ff11,spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+1 dwmblocks ") },
 	{ 0,                            0x1008ff12,spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+1 dwmblocks ") },
